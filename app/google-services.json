@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1001253010947",
+    "project_id": "schedu-173c9",
+    "storage_bucket": "schedu-173c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1001253010947:android:07168d16c002c3a1d49836",
+        "android_client_info": {
+          "package_name": "za.thirdyear.schedu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD56i6agAzlSvPQEXTAhxR0PQ1JHM5V5DM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

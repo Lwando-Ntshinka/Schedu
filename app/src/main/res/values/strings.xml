@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Schedu</string>
+    <string name="login_in">LOGIN</string>
+    <string name="email_address">Email address</string>
+    <string name="purple_background_image">Purple Background Image</string>
+    <string name="schedu_logo">Schedu Logo</string>
+    <string name="chedu">chedu</string>
+    <string name="hours_required">Hours Required</string>
+    <string name="end_date">End Date</string>
+    <string name="start_date">Start Date</string>
+    <string name="project_name">Project Name</string>
+    <string name="category_name">Category Name</string>
+    <string name="add_category_photo">Add Category Photo</string>
+    <string name="create">Create</string>
+    <string name="start_time">Start Time</string>
+    <string name="category">Category</string>
+    <string name="create_category">Create Category</string>
+    <string name="work_tasks">Work Tasks</string>
+    <string name="personal_tasks">Personal Tasks</string>
+    <string name="studying">Studying</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register.</string>
+    <string name="password">Password</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Closed</string>
+    <string name="ok_button_title">ok_button_title</string>
+
+    <string name="select_a_category">Select a Category</string>
+    <string name="man_standing_with_arms_crossed">man standing with arms crossed</string>
+    <string name="set_maximum_and_minimum_hours">Set minimum and maximum hours</string>
+    <string name="select_category_name">Enter category name</string>
+    <string name="minimum_daily_goal_hours">Minimum daily goal(Hours)</string>
+    <string name="minimum_hours">Minimum hours</string>
+    <string name="maximum_daily_goal_hours">Maximum daily goal(Hours)</string>
+    <string name="maximum_hours">Maximum hours</string>
+    <string name="save">Save</string>
+    <string name="information_button">Information Button</string>
+    <string name="project_filtering">Project Filtering</string>
+    <string name="start_date_dd_mm_yyyy">Start date: dd-MM-yyyy</string>
+    <string name="end_date_dd_mm_yyyy">End date: dd-MM-yyyy</string>
+    <string name="filter">Filter</string>
+    <string name="Okay">OKAY</string>
+
+
+</resources>

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity"
+    android:background="@color/app_background_black">
+
+
+        <!-- Box-2: Inner Background -->
+
+
+            <!-- Text: Already have an account? Log In -->
+
+    <!-- OutlinedButton-1: Sign Up with Google -->
+
+            <!-- OutlinedButton-2: Sign Up with Facebook -->
+
+            <!-- Button: LOGIN IN -->
+
+            <!-- Image: Logo -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterRedirect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="696dp"
+        android:text="Already have an account? Log In"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Text: REGISTER -->
+
+    <!-- OutlinedTextField-1: Email address -->
+
+            <!-- Divider-1 -->
+
+            <!-- Divider-2 -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="624dp"
+        android:background="#FFFF9B04"
+        android:text="Register"
+        android:textStyle="bold"
+        android:textColor="#373737"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtTextName"
+        android:layout_width="289dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="216dp"
+        android:height="52dp"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtSurname"
+        android:layout_width="293dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="292dp"
+        android:autofillHints="Email Address"
+        android:hint="Surname"
+        android:inputType="textPersonName"
+        android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtEmailAddress"
+        android:layout_width="292dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="456dp"
+        android:autofillHints="Email Address"
+        android:drawableStart="@drawable/email_at_symbol"
+        android:hint="@string/email_address"
+        android:inputType="textEmailAddress"
+        android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtUserName"
+        android:layout_width="290dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="372dp"
+        android:autofillHints="Email Address"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- OutlinedTextField-2: Password -->
+
+            <!-- Image: Person Sitting Image -->
+
+
+    <TextView
+        android:id="@+id/textLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="72dp"
+        android:text="REGISTER"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="144dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="124dp"
+        android:background="#FFFFFF"
+        android:rotation="179.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="144dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginTop="76dp"
+        android:background="#FFFFFF"
+        android:rotation="179.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="294dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="536dp"
+        android:height="52dp"
+        android:drawableStart="@drawable/password_lock"
+        android:hint="@string/password"
+        android:textColorHint="#07A2B7"
+        android:textColor="#07A2B7"
+        android:textSize="20sp"
+        android:inputType="textVisiblePassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imagePersonSitting"
+        android:layout_width="73dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/person_sitting_login"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageLogo"
+        android:layout_width="66dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/schedu_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

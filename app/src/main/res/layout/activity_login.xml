@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/app_background_black">
+
+    <!-- Box-1: Background -->
+    <FrameLayout
+        android:id="@+id/background"
+        android:layout_width="360dp"
+        android:layout_height="800dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Box-2: Inner Background -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#222121">
+
+            <!-- Text: Already have an account? Log In -->
+
+            <!-- OutlinedButton-1: Sign Up with Google -->
+
+            <!-- OutlinedButton-2: Sign Up with Facebook -->
+
+            <!-- Button: LOGIN IN -->
+
+            <!-- Image: Logo -->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRegisterRedirect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="544dp"
+                android:background="@color/app_background_black"
+                android:text="@string/don_t_have_an_account_register"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSignUpGoogle"
+                android:layout_width="274dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="612dp"
+                android:background="#222121"
+                android:drawableLeft="@drawable/google_icon"
+                android:text="Sign in with Google"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="#07A2B7" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/buttonSignUpFacebook"
+                android:layout_width="274dp"
+                android:layout_height="49dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="676dp"
+                android:background="#222121"
+                android:drawableLeft="@drawable/facebook_icon"
+                android:text="Sign  in with Facebook"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="#07A2B7" />
+
+            <!-- Text: LOGIN -->
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnLogin"
+                android:layout_width="242dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="64dp"
+                android:layout_marginTop="496dp"
+                android:background="#FFFF9B04"
+                android:text="@string/login_in"
+                android:textColor="#373737"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageLogo"
+                android:layout_width="129dp"
+                android:layout_height="129dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="184dp"
+                android:src="@drawable/schedu_logo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- OutlinedTextField-1: Email address -->
+
+            <!-- Divider-1 -->
+
+            <!-- Divider-2 -->
+
+            <EditText
+                android:id="@+id/txtEmailAddress"
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="340dp"
+                android:autofillHints="Email Address"
+                android:drawableStart="@drawable/email_at_symbol"
+                android:hint="@string/email_address"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#07A2B7"
+                android:textColor="#07A2B7"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="144dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="196dp"
+                android:layout_marginTop="252dp"
+                android:background="#FFFFFF"
+                android:rotation="179.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="216dp"
+                android:layout_marginTop="244dp"
+                android:text="LOGIN"
+                android:textColor="#FFFFFF"
+                android:textSize="40sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="144dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="196dp"
+                android:layout_marginTop="292dp"
+                android:background="#FFFFFF"
+                android:rotation="179.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- OutlinedTextField-2: Password -->
+
+            <!-- Image: Person Sitting Image -->
+
+
+            <EditText
+                android:id="@+id/txtPassword"
+                android:layout_width="285dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="420dp"
+                android:drawableLeft="@drawable/password_lock"
+                android:hint="Password"
+                android:textColorHint="#07A2B7"
+                android:textColor="#07A2B7"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imagePersonSitting"
+                android:layout_width="227dp"
+                android:layout_height="217dp"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/person_sitting_login"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

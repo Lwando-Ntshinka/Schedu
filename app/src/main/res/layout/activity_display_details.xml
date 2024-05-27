@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background_black"
+    tools:context=".DisplayDetails">
+
+    <!-- NavigationView -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView2"
+        android:layout_width="405dp"
+        android:layout_height="315dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.navigation.NavigationView>
+
+    <!-- Include layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_base"
+        android:layout_width="426dp"
+        android:layout_height="732dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TextView for category -->
+
+    <TextView
+        android:id="@+id/textViewCategory"
+        android:layout_width="238dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="160dp"
+        android:contentDescription="Information Button"
+        android:gravity="center"
+        android:text="IT"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ImageButton for info -->
+
+    <ListView
+        android:id="@+id/ltvProjects"
+        android:layout_width="385dp"
+        android:layout_height="279dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="136dp"
+        android:background="@color/white"
+        android:listSelector="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textHoursDuration"
+        android:layout_width="227dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginBottom="496dp"
+        android:text="Total Hours Spent: 0"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageViewInfoIcon"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="208dp"
+        android:contentDescription="View Information Button"
+        android:src="@drawable/informationicon1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- ListView for projects -->
+
+    <!-- Button for filter -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonFilter"
+        android:layout_width="159dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="54dp"
+        android:background="#d9d9d9"
+        android:text="Filter"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ltvProjects" />
+
+    <!-- Button for calculating hours -->
+
+
+
+    <!-- TextView for total hours -->
+
+    <!-- Button for refreshing -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRefresh"
+        android:layout_width="154dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="56dp"
+        android:text="Refresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ltvProjects" />
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="416dp"
+        android:layout_height="299dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/app_background_black"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </LinearLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/scedu_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

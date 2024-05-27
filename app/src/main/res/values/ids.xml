@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txtCatName" type="id" />
+    <item name="textCatName" type="id" />
+    <item name="textProName" type="id" />
+    <item name="txtProName" type="id" />
+    <item name="textMin" type="id" />
+    <item name="txtMin" type="id" />
+    <item name="textMax" type="id" />
+    <item name="txtMax" type="id" />
+    <item name="btnSaveHours" type="id" />
+    <item name="textHours" type="id" />
+</resources>
