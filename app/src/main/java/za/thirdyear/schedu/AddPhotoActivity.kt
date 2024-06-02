@@ -27,14 +27,11 @@ import com.google.android.material.navigation.NavigationView
 import java.io.IOException
 
 
-class AddPhotoActivity : AppCompatActivity() {
+class AddPhotoActivity : BaseActivity() {
 
     private lateinit var button1: Button
     private lateinit var imageView: ImageView
     private lateinit var button2: Button
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var toolbar: Toolbar
     private lateinit var takePhoto : Button
 
     val data_entries = mutableListOf<Project>() // Create an empty list
@@ -212,54 +209,10 @@ class AddPhotoActivity : AppCompatActivity() {
             e.printStackTrace()
             Toast.makeText(this, "Failed to save image", Toast.LENGTH_SHORT).show()
         }
-        //Menu, Drawer and Toolbar
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navigationView = findViewById(R.id.navigationView)
-        toolbar = findViewById(R.id.toolbar)
-        val toggle = ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
 
-                R.id.nav_view_categories -> {
+    }
 
-                    val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                R.id.nav_display_details -> {
-
-                    val moveIntent = Intent(this, DisplayDetails::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                R.id.nav_create_project -> {
-
-                    val moveIntent = Intent(this, CreateProjects::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-
-                R.id.nav_logout -> {
-
-                    val moveIntent = Intent(this, LoginActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                else -> false
-            }
-        }
-
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_base
     }
 }

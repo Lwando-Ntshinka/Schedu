@@ -16,10 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import layout.Category
 
-class ViewCategoriesActivity : AppCompatActivity() {
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var toolbar: Toolbar
+class ViewCategoriesActivity : BaseActivity() {
     private lateinit var btnCreateCategory : Button
     private lateinit var listViewCategories : ListView
 
@@ -125,48 +122,10 @@ class ViewCategoriesActivity : AppCompatActivity() {
         }
 
 
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navigationView = findViewById(R.id.navigationView)
-        toolbar = findViewById(R.id.toolbar)
-        val toggle = ActionBarDrawerToggle(
-            this,
-            drawerLayout,
-            toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.nav_home -> {
-                    val moveIntent = Intent(this, MainActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
+    }
 
-                R.id.nav_view_categories -> {
-                    val moveIntent = Intent(this, ViewCategoriesActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                R.id.nav_display_details -> {
-                    val moveIntent = Intent(this, DisplayDetails::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                R.id.nav_logout -> {
-                    val moveIntent = Intent(this, LoginActivity::class.java)
-                    startActivity(moveIntent)
-                    true
-                }
-
-                else -> false
-            }
-        }
-
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_base
     }
 
 }

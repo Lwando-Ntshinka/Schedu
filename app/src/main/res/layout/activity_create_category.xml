@@ -7,6 +7,8 @@
     tools:context=".CreateCategoryActivity"
     android:background="@color/app_background_black">
 
+    <include layout="@layout/activity_base2"/>
+
     <TextView
         android:id="@+id/txtSelectCategory"
         android:layout_width="160dp"
@@ -92,35 +94,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/icon_gallery" />
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="411dp"
-        android:layout_height="661dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/app_background_black"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        </LinearLayout>
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/scedu_menu" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

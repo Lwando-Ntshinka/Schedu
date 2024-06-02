@@ -8,12 +8,22 @@
     android:background="@color/app_background_black"
     tools:context=".CreateProjects">
 
+    <!-- Include layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_base"
+        android:layout_width="426dp"
+        android:layout_height="732dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/txtSelectCategory"
         android:layout_width="160dp"
         android:layout_height="64dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="156dp"
         android:text="Create a Project"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -21,26 +31,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-
     <ImageView
         android:id="@+id/imageViewMan"
         android:layout_width="42dp"
         android:layout_height="119dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
         android:src="@drawable/person_standing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <ScrollView
-        android:layout_width="381dp"
-        android:layout_height="234dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="164dp"
+        android:layout_width="407dp"
+        android:layout_height="399dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -57,11 +63,11 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/project_name"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/txtProjectName"
-                android:layout_width="match_parent"
+                android:layout_width="390dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
@@ -80,11 +86,25 @@
 
             <EditText
                 android:id="@+id/txtCategoryName"
-                android:layout_width="match_parent"
+                android:layout_width="390dp"
                 android:layout_height="56dp"
                 android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
                 android:hint="@string/category_name" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddProjectPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="7dp"
+                android:drawableEnd="@drawable/icon_gallery"
+                android:text="@string/add_project_photo"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textStartDate"
@@ -96,42 +116,60 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+            <CalendarView
+                android:id="@+id/startDateCalendar"
+                android:layout_width="390dp"
+                android:layout_height="254dp"
+                android:background="@color/app_background_black"
+                android:theme="@style/CustomCalendarView"
+                android:layout_marginBottom="10dp"/>
+
             <EditText
                 android:id="@+id/txtStartDate"
                 android:layout_width="239dp"
                 android:layout_height="55dp"
-                android:layout_gravity="left"
+                android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
                 android:hint="@string/start_date_dd_mm_yyyy"
-                android:inputType="date" />
+                android:inputType="date"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/textEndDate"
-                android:layout_width="110dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="10dp"
-                android:hint="@string/end_date_dd_mm_yyyy"
+                android:layout_marginTop="20dp"
+                android:text="@string/end_date"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+            <CalendarView
+                android:id="@+id/endDateCalendar"
+                android:layout_width="390dp"
+                android:layout_height="254dp"
+                android:background="@color/app_background_black"
+                android:theme="@style/CustomCalendarView"
+                android:layout_marginBottom="10dp"/>
+
             <EditText
-                android:id="@+id/txtEndDate"
+                android:id="@+id/endDate"
                 android:layout_width="245dp"
                 android:layout_height="50dp"
-                android:layout_gravity="left"
+                android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
                 android:drawableEnd="@drawable/icon_calendar"
-                android:hint="@string/end_date"
+                android:hint="@string/end_date_dd_mm_yyyy"
                 android:inputType="date" />
+
 
             <TextView
                 android:id="@+id/textHoursRequired"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/hours_required"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -150,15 +188,16 @@
                 android:id="@+id/view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textMin"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
+                android:layout_height="31dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 android:text="@string/minimum_daily_goal_hours"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/txtMin"
@@ -167,17 +206,16 @@
                 android:layout_gravity="center_horizontal"
                 android:background="#d9d9d9"
                 android:hint="@string/minimum_hours"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="@string/maximum_daily_goal_hours"
                 android:textColor="@color/white"
-                android:textSize="24sp"
-                />
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/txtMax"
@@ -185,8 +223,7 @@
                 android:layout_height="55dp"
                 android:background="#d9d9d9"
                 android:hint="@string/maximum_hours"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
@@ -195,57 +232,13 @@
         android:id="@+id/btnCreateProject"
         android:layout_width="114dp"
         android:layout_height="57dp"
-        android:layout_marginStart="284dp"
-        android:layout_marginBottom="416dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginBottom="512dp"
         android:text="Create"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddProjectPhoto"
-        android:layout_width="206dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="184dp"
-        android:drawableEnd="@drawable/icon_gallery"
-        android:text="Add Project Photo"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
-        android:layout_width="412dp"
-        android:layout_height="665dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:context=".MainActivity">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/app_background_black"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        </LinearLayout>
-
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/navigationView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:menu="@menu/scedu_menu" />
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 
