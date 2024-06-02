@@ -9,9 +9,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.NonNull
+import androidx.compose.foundation.gestures.rememberTransformableState
+import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -63,12 +68,27 @@ class RegistrationActivity : AppCompatActivity() {
                     "Please fill in all fields",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else {
+            }
+            //Register User
+            else {
                 // All fields are filled, proceed with registration
                 // Save the data (you can implement your saving logic here)
-                saveUserData(name, surname, username, emailAddress, password)
-                newUser = User(newUserID, name, surname, username, emailAddress, password)
+                saveUserData(name, surname, username, emailAddress, password) //Save user data in shared preference
+                newUser = User(name, surname, username, emailAddress, password) //Create object of user to enter into firebase
 
+                //Create Account for Firebase with username and password
+                var registered : Boolean
+                RegisterUser(emailAddress, password, newUser) {registered ->
+                    if (registered) //If registration was successful
+                    {
+
+                    }
+
+                    else //if registration was unsuccessful
+                    {
+
+                    }
+                }
 
                 // Retrieve saved user data from SharedPreferences
                 val savedEmail = sharedPreferences.getString("emailAddress", "")
@@ -86,12 +106,15 @@ class RegistrationActivity : AppCompatActivity() {
                 startActivity(loginIntent)
             }
         }
+
+        //Redirect to Login
         btnRegisterRedirect.setOnClickListener {
             val loginIntent = Intent(this@RegistrationActivity, LoginActivity::class.java)
             startActivity(loginIntent)
         }
     }
 
+    //Shared preference function to save user data
     private fun saveUserData(
         name: String,
         surname: String,
@@ -108,15 +131,43 @@ class RegistrationActivity : AppCompatActivity() {
         editor.putString("password", password)
         editor.apply()
     }
+
+
+    //Requires Testing
+    public fun RegisterUser(email : String, password : String, user: User, callback: (Boolean) -> Unit) : Boolean {
+        var registered: Boolean = false
+        registerUser = FirebaseAuth.getInstance() //Taking FirebaseAuth Instance
+        val firebasestore = FirebaseFirestore.getInstance()
+
+        //Register UserAuthResult
+        registerUser.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener()
+            { task ->
+                if (task.isSuccessful) {
+                    val userID = registerUser.currentUser?.uid
+                    if (userID != null) {
+
+
+                        //Save user data in Firestore
+                        firebasestore.collection("users").document(userID).set(user)
+                            .addOnCompleteListener { firestoreTask ->
+                                if (firestoreTask.isSuccessful) {
+                                    callback(true)
+                                    registered = true
+                                } else {
+                                    callback(false)
+                                    registered = false
+                                }
+                            }
+                    }
+                    else if (!task.isSuccessful) {
+                        callback(false) //make callback true
+                        registered = false //make registered true
+                    }
+                }
+
+
+            }
+        return registered;
+    }
 }
-
-
-///******Companion objects******/
-//    companion object {
-//        private fun setContentView(
-//            registrationActivity: RegistrationActivity,
-//            activityRegistration: Any
-//        ): RegistrationActivity {
-//    }
-//
-//}

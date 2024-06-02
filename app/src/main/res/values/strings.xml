@@ -22,8 +22,7 @@
     <string name="password">Password</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Closed</string>
-    <string name="ok_button_title">ok_button_title</string>
-
+    <string name="ok_button_title">Okay</string>
     <string name="select_a_category">Select a Category</string>
     <string name="man_standing_with_arms_crossed">man standing with arms crossed</string>
     <string name="set_maximum_and_minimum_hours">Set minimum and maximum hours</string>
@@ -39,7 +38,13 @@
     <string name="end_date_dd_mm_yyyy">End date: dd-MM-yyyy</string>
     <string name="filter">Filter</string>
     <string name="Okay">OKAY</string>
-    <string name="add_project_photo">Add Project Photo</string>
+    <string name="add_project_photo">Add Photo</string>
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="start_timer">Start Timer</string>
+    <string name="stop_timer">Stop Timer</string>
+    <string name="timer_default">00:00:00</string>
+    <string name="seconds">Seconds</string>
 
 
 </resources>

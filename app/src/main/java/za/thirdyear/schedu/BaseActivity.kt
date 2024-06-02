@@ -9,8 +9,10 @@ import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -25,6 +27,7 @@ abstract class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationIt
     lateinit var imgPurpleBackground : ImageView
     lateinit var imglogo : ImageView
     lateinit var txtScheduText : TextView
+
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -101,6 +104,11 @@ abstract class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationIt
                 true
             }
 
+            R.id.nav_focus_timer->{
+                val moveIntent = Intent(this, TimerActivity::class.java)
+                startActivity(moveIntent)
+                true
+            }
 
             R.id.nav_logout -> {
 
@@ -123,4 +131,25 @@ abstract class BaseActivity : AppCompatActivity(), NavigationView.OnNavigationIt
 
     @LayoutRes
     abstract fun getLayoutResourceId(): Int
+    /*
+    * Code for implementing the above member (Copy and Paste):
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_base
+    }
+    * */
+
+    /******Show Message Alert ******/
+    public fun ShowAlert(message: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage(message)
+        builder.setPositiveButton(R.string.ok_button_title, null)
+
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    public fun ShowToast(message: String)
+    {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }

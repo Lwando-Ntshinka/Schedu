@@ -6,6 +6,108 @@
     android:layout_height="match_parent"
     tools:context=".TimerActivity">
 
-    <include layout="@layout/activity_base"/>
+
+    <include
+        layout="@layout/activity_base"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+    <TextView
+        android:id="@+id/txtHours"
+        android:layout_width="62dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/hours"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtMinutes"
+        android:layout_width="81dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/minutes"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtSeconds"
+        android:layout_width="74dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="176dp"
+        android:text="@string/seconds"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/npTimerHours"
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="284dp"
+        style="@style/CustomNumberPickerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/npTimerMinutes"
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="220dp"
+        style="@style/CustomNumberPickerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/npTimerSeconds"
+        android:layout_width="70dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="220dp"
+        style="@style/CustomNumberPickerView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/pbTimerProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="296dp"
+        android:layout_height="269dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginBottom="88dp"
+        android:indeterminateDrawable="@android:drawable/alert_dark_frame"
+        android:maxWidth="@android:dimen/notification_large_icon_width"
+        android:maxHeight="@android:dimen/notification_large_icon_height"
+        android:minWidth="@android:dimen/notification_large_icon_width"
+        android:minHeight="@android:dimen/notification_large_icon_height"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStopStartTimer"
+        android:layout_width="182dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="28dp"
+        android:drawableEnd="@drawable/icon_clock"
+        android:text="@string/start_timer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

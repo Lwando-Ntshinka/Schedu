@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CalendarView
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -17,6 +18,7 @@ import com.google.android.material.navigation.NavigationView
 import layout.Category
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
+import java.util.Calendar
 import java.util.Date
 
 class CreateProjects : AppCompatActivity() {
@@ -38,7 +40,8 @@ class CreateProjects : AppCompatActivity() {
     private lateinit var toolbar: Toolbar
     private lateinit var txtMin:EditText
     private lateinit var txtMax:EditText
-
+    lateinit var calEndDate : CalendarView
+    lateinit var calStartDate : CalendarView
 
 
 
@@ -53,7 +56,9 @@ class CreateProjects : AppCompatActivity() {
         // Linking views using findViewByIdm@gmail
         txtProjectName = findViewById(R.id.txtProjectName)
         txtStartDate = findViewById(R.id.txtStartDate)
-        txtEndDate = findViewById(R.id.txtEndDate)
+        txtStartDate = findViewById(R.id.txtStartDate)
+        calEndDate = findViewById(R.id.endDateCalendar)
+        calStartDate = findViewById(R.id.startDateCalendar)
         txtHoursRequired = findViewById(R.id.txtHoursRequired)
         btnCreateProject=findViewById(R.id.btnCreateProject)
         btnAddProjectPhoto=findViewById(R.id.btnAddProjectPhoto)

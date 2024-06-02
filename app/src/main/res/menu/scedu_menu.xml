@@ -9,18 +9,21 @@
 
 
     <item
-        android:id="@+id/nav_view_categories"
-        android:title="View categories" />
-
-    <item
         android:id="@+id/nav_display_details"
         android:title="Display details" />
     <item
         android:id="@+id/nav_create_project"
         android:title="Create Project" />
+    <item
+        android:id="@+id/nav_view_categories"
+        android:title="View categories" />
 
 
-
+    <item
+        android:id="@+id/nav_focus_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Focus Timer" />
     <item
         android:id="@+id/nav_logout"
         android:title="Logout"/>

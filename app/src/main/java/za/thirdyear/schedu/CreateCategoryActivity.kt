@@ -37,7 +37,7 @@ private var categoryArray : Array<Array<String>> = arrayOf(
     arrayOf("CATSCHOOL", "School"))
 
 
-class CreateCategoryActivity : BaseActivity2() {
+class CreateCategoryActivity : BaseActivity() {
     private lateinit var btnAddCategoryPhoto : Button
     private lateinit var imgCategoryPhoto : ImageView
     private lateinit var txtCategoryName : EditText
@@ -98,7 +98,7 @@ class CreateCategoryActivity : BaseActivity2() {
                     else //Show alert that permission was denied
                     {
                         message = "Permission denied"
-                        showAlert(message)
+                        ShowAlert(message)
                     }
                 }
                 catch (e : Exception)
@@ -123,6 +123,10 @@ class CreateCategoryActivity : BaseActivity2() {
 
         }
 
+    }
+
+    override fun getLayoutResourceId(): Int {
+        return R.layout.activity_base
     }
 
     //Need to set for image imported from gallery- For Part 3

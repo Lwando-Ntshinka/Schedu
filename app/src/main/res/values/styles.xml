@@ -7,4 +7,14 @@
         <item name="android:textColorSecondary">@color/white</item>
     </style>
 
+    <style name="CustomNumberPickerView" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/purple_100</item>
+    </style>
+
+    <style name="CustomListViewStyle" parent="@android:style/Widget.ListView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorPrimary">@color/white</item>
+    </style>
 </resources>

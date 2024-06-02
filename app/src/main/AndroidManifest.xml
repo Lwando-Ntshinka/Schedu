@@ -33,9 +33,6 @@
             android:name=".FilterProject"
             android:exported="false" />
         <activity
-            android:name=".maxMinHours"
-            android:exported="false" />
-        <activity
             android:name=".AddPhotoActivity"
             android:exported="false" />
         <activity
@@ -43,6 +40,7 @@
             android:exported="false" />
         <activity
             android:name=".ViewCategoriesActivity"
+            android:theme="@style/CustomListViewStyle"
             android:exported="false" />
         <activity
             android:name=".CreateCategoryActivity"
@@ -74,9 +72,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" />
-        <activity
-            android:name=".ProjectFilteringActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

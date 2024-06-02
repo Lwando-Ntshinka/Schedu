@@ -31,6 +31,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCreateProject"
+        android:layout_width="114dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="436dp"
+        android:background="@color/purple_100"
+        android:text="Create"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ImageView
         android:id="@+id/imageViewMan"
         android:layout_width="42dp"
@@ -151,8 +164,8 @@
                 android:layout_height="254dp"
                 android:background="@color/app_background_black"
                 android:theme="@style/CustomCalendarView"
-                android:layout_marginBottom="10dp"/>
-
+                android:layout_marginBottom="10dp"
+                />
             <EditText
                 android:id="@+id/endDate"
                 android:layout_width="245dp"
@@ -174,6 +187,14 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+            <NumberPicker
+                android:id="@+id/npHoursRequired"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:solidColor="@color/purple_500"
+                />
+
             <EditText
                 android:id="@+id/txtHoursRequired"
                 android:layout_width="match_parent"
@@ -194,7 +215,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="31dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/minimum_daily_goal_hours"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -212,7 +233,7 @@
                 android:id="@+id/textMax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="@string/maximum_daily_goal_hours"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
@@ -227,19 +248,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnCreateProject"
-        android:layout_width="114dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginBottom="512dp"
-        android:text="Create"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
