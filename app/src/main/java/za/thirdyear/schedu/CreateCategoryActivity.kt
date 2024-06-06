@@ -5,22 +5,14 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.media.Image
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.widget.Toolbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.*
-import com.google.firebase.ktx.Firebase
 import layout.Category
-import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.navigation.NavigationView
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.Manifest
 import android.app.Activity
@@ -38,8 +30,9 @@ private var categoryArray : Array<Array<String>> = arrayOf(
 
 
 class CreateCategoryActivity : BaseActivity() {
-    private lateinit var btnAddCategoryPhoto : Button
-    private lateinit var imgCategoryPhoto : ImageView
+    private lateinit var btnAddCategoryPhoto : Button //Redirect to Add Photo Activity
+    private lateinit var categoryImage: Uri
+    private lateinit var imgCategoryPhoto : ImageView //Preview Photo
     private lateinit var txtCategoryName : EditText
     private lateinit var btnCreateCategory : Button
     //Code for UserID Preference
@@ -47,8 +40,7 @@ class CreateCategoryActivity : BaseActivity() {
     private lateinit var newCategoryImage : Image
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseDatabase: FirebaseDatabase
-    var imageUri: Uri? = null
-    var imageView: ImageView? = null
+    //var imageView: ImageView? = null
     val IMAGE_CHOOSE = 1
     val IMAGE_CAPTURE = 2
     val IMAGE_PICK_CODE = 3 // GIVEN INTEGER VALUE FOR IMAGE_PICK_CODE
@@ -84,14 +76,18 @@ class CreateCategoryActivity : BaseActivity() {
 
                 try
                 {
+                    //Access Photos
+                    var picture : AddPhotoActivity = AddPhotoActivity() //Add Photo Activity to
+
+
                     accessPermission = AccessGallery()
                     if (accessPermission == true)
                     {
                         //Select Gallery Image
-                        val intent = Intent(Intent.ACTION_PICK)
-                        intent.type = "image/*"
-                        startActivityForResult(intent, IMAGE_PICK_CODE)
+
+
                         //Store Image from Gallery into imageview and image variable
+
 
                     }
 
@@ -140,10 +136,10 @@ class CreateCategoryActivity : BaseActivity() {
         //Check if there is an image selected
         if (resultCode == IMAGE_PICK_CODE && requestCode == Activity.RESULT_OK && data != null) {
             // Set image captured to image view
-            imageUri = data.data
-            if(imageUri != null)
+            //categoryImage = data.data- get image
+            if(categoryImage != null)
             {
-                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
+                bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, categoryImage)
                 //Stores image into bitmap
                 val imageVariable = bitmap
 

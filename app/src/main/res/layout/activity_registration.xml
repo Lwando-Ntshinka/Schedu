@@ -21,18 +21,6 @@
 
             <!-- Image: Logo -->
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnRegisterRedirect"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="696dp"
-        android:text="Already have an account? Log In"
-        android:textColor="#FFFFFF"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <!-- Text: REGISTER -->
 
     <!-- OutlinedTextField-1: Email address -->
@@ -40,6 +28,19 @@
             <!-- Divider-1 -->
 
             <!-- Divider-2 -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegisterRedirect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="684dp"
+        android:background="@color/app_background_black"
+        android:text="Already have an account? Log In"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnRegister"
