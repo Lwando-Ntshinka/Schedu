@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                     //Get User Details and store in shared preference
                     saveUserData(loginUser.userID, loginUser.userName, loginUser.userSurname, loginUser.userEmail)
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    val mainIntent = Intent(this, DisplayDetails::class.java)
+                    val mainIntent = Intent(this, MainActivity::class.java)
                     startActivity(mainIntent)
                 }
 

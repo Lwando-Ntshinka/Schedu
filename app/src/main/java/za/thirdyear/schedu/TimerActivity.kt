@@ -42,7 +42,7 @@ class TimerActivity : BaseActivity()
             {
                 if(npSeconds.value == 0 && npMinutes.value == 0 && npHours.value == 0)
                 {
-                    ShowToast("Please enter a time")
+                    ShowAlert("Please enter a time")
                 }
 
                 else

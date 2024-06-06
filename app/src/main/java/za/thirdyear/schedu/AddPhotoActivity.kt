@@ -174,7 +174,7 @@ class AddPhotoActivity : BaseActivity() {
         }
     }
 
-    private fun showAlert(message: String) {
+    public fun showAlert(message: String) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
         builder.setPositiveButton(R.string.Okay, null)

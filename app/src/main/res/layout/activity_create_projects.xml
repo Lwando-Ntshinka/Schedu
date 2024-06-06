@@ -8,14 +8,7 @@
     android:background="@color/app_background_black"
     tools:context=".CreateProjects">
 
-    <!-- Include layout -->
-    <include
-        android:id="@+id/include"
-        layout="@layout/activity_base"
-        android:layout_width="426dp"
-        android:layout_height="732dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
 
     <TextView
@@ -249,5 +242,13 @@
         </LinearLayout>
     </ScrollView>
 
+    <!-- Include layout -->
+    <include
+        android:id="@+id/include"
+        layout="@layout/activity_base"
+        android:layout_width="426dp"
+        android:layout_height="732dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
