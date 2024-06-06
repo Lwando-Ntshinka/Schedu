@@ -9,11 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.NonNull
-import androidx.compose.foundation.gestures.rememberTransformableState
-import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -28,9 +24,8 @@ class RegistrationActivity : AppCompatActivity() {
     private lateinit var txtPassword: EditText
     private lateinit var btnRegister: Button
     private lateinit var registerUser: FirebaseAuth
-    private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var btnRegisterRedirect:Button
+    private lateinit var btnRegisterRedirect: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         FirebaseApp.initializeApp(this)
@@ -47,7 +42,7 @@ class RegistrationActivity : AppCompatActivity() {
         txtEmailAddress = findViewById(R.id.txtEmailAddress)
         txtPassword = findViewById(R.id.txtPassword)
         btnRegister = findViewById(R.id.btnRegister)
-        btnRegisterRedirect=findViewById(R.id.btnRegisterRedirect)
+        btnRegisterRedirect = findViewById(R.id.btnRegisterRedirect)
 
 
         /******Register User Button******/
@@ -57,8 +52,9 @@ class RegistrationActivity : AppCompatActivity() {
             val username = txtUserName.text.toString().trim()
             val emailAddress = txtEmailAddress.text.toString().trim()
             val password = txtPassword.text.toString().trim()
-            var newUser : User
-            var newUserID : String = "User$name$surname"
+            val newUser: User //Enter Details
+            val savedNewUser : User
+            var registrationStatus: Boolean
 
             // Check if any field is empty
             if (name.isEmpty() || surname.isEmpty() || username.isEmpty() || emailAddress.isEmpty() || password.isEmpty()) {
@@ -73,37 +69,45 @@ class RegistrationActivity : AppCompatActivity() {
             else {
                 // All fields are filled, proceed with registration
                 // Save the data (you can implement your saving logic here)
-                saveUserData(name, surname, username, emailAddress, password) //Save user data in shared preference
-                newUser = User(name, surname, username, emailAddress, password) //Create object of user to enter into firebase
-
+                newUser = User(
+                    name,
+                    surname,
+                    username,
+                    emailAddress,
+                    password
+                ) //Create object of user to enter into firebase
                 //Create Account for Firebase with username and password
-                var registered : Boolean
-                RegisterUser(emailAddress, password, newUser) {registered ->
-                    if (registered) //If registration was successful
+                RegisterUser(emailAddress, password, newUser) {registrationStatus->
+                    if (registrationStatus) //If registration was successful
                     {
-
-                    }
-
-                    else //if registration was unsuccessful
+                        // Show success message
+                        Toast.makeText(
+                            this@RegistrationActivity,
+                            "Thank you, your account has been successfully registered!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        // Navigate to login activity
+                        val loginIntent = Intent(this@RegistrationActivity, LoginActivity::class.java)
+                        startActivity(loginIntent)
+                        saveUserData(
+                            name,
+                            surname,
+                            username,
+                            emailAddress,
+                            password
+                        ) //Save user data in shared preference
+                    } else //if registration was unsuccessful
                     {
-
+                        Toast.makeText(
+                            this@RegistrationActivity,
+                            "Your registration has unsuccessful",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
 
-                // Retrieve saved user data from SharedPreferences
-                val savedEmail = sharedPreferences.getString("emailAddress", "")
-                val savedPassword = sharedPreferences.getString("password", "")
 
-                // Show success message
-                Toast.makeText(
-                    this@RegistrationActivity,
-                    "Thank you, your registration has been successful",
-                    Toast.LENGTH_SHORT
-                ).show()
 
-                // Navigate to login activity
-                val loginIntent = Intent(this@RegistrationActivity, LoginActivity::class.java)
-                startActivity(loginIntent)
             }
         }
 
@@ -134,10 +138,10 @@ class RegistrationActivity : AppCompatActivity() {
 
 
     //Requires Testing
-    public fun RegisterUser(email : String, password : String, user: User, callback: (Boolean) -> Unit) : Boolean {
-        var registered: Boolean = false
+    public fun RegisterUser(email: String, password: String, user: User, callback: (Boolean) -> Unit): Boolean {
+        var registered = false
         registerUser = FirebaseAuth.getInstance() //Taking FirebaseAuth Instance
-        val firebasestore = FirebaseFirestore.getInstance()
+        val firebaseFirestore = FirebaseFirestore.getInstance()
 
         //Register UserAuthResult
         registerUser.createUserWithEmailAndPassword(email, password)
@@ -146,26 +150,23 @@ class RegistrationActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
                     val userID = registerUser.currentUser?.uid
                     if (userID != null) {
-
-
                         //Save user data in Firestore
-                        firebasestore.collection("users").document(userID).set(user)
+                        firebaseFirestore.collection("users").document(userID).set(user)
                             .addOnCompleteListener { firestoreTask ->
-                                if (firestoreTask.isSuccessful) {
+                                if (firestoreTask.isSuccessful) /*if registration is successful*/ {
                                     callback(true)
                                     registered = true
                                 } else {
+
                                     callback(false)
                                     registered = false
                                 }
                             }
-                    }
-                    else if (!task.isSuccessful) {
-                        callback(false) //make callback true
-                        registered = false //make registered true
+                    } else if (!task.isSuccessful) /*if registration is unsuccessful*/{
+                         callback(false)//make registered false
+                        registered = false
                     }
                 }
-
 
             }
         return registered;

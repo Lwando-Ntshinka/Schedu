@@ -1,10 +1,8 @@
 package za.thirdyear.schedu
 
 import android.content.ContentValues
-import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
@@ -14,16 +12,18 @@ class User {
     var userName : String = ""
     var userSurname : String = ""
     var userEmail : String = ""
-    lateinit var userUserName : String
-    lateinit var userPassword : String
-    private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var firebaseDatabase: FirebaseDatabase
+    var userUserName : String = ""
+    var userPassword : String = ""
+    private var firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private var firebaseDatabase: FirebaseDatabase = FirebaseDatabase.getInstance()
 
 
 
     //Constructor
     constructor()
     {}
+
+
 
     constructor(Name : String,
                 Surname : String,
@@ -50,11 +50,11 @@ class User {
     }
 
     /******Create- Insert data to add Details to Firebase for Registration******/
-    public fun RegisterUser(NewUser: User): Boolean {
+    public fun RegisterUser(newUser: User): Boolean {
         var registered: Boolean = false
 
         //Enter newUser into Firebase (as Dictionary)
-        firebaseAuth.createUserWithEmailAndPassword(NewUser.userName, NewUser.userPassword)
+        firebaseAuth.createUserWithEmailAndPassword(newUser.userName, newUser.userPassword)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
 
@@ -65,8 +65,8 @@ class User {
                         val userID = user.uid
 
                         // Save additional user information to the Realtime Database
-                        val userReference = firebaseDatabase.reference.child(NewUser.userEmail)
-                        userReference.child(NewUser.userEmail).setValue(NewUser)
+                        val userReference = firebaseDatabase.reference.child(newUser.userEmail)
+                        userReference.child(newUser.userEmail).setValue(newUser)
                             .addOnSuccessListener { registered = true }
                             .addOnFailureListener { registered = false } // User registration failed
                     }
@@ -100,8 +100,8 @@ class User {
     }
 
     companion object{
-        lateinit var firebaseAuth : FirebaseAuth //Declared Firebase Authorisation
-        private lateinit var firebaseStore : FirebaseFirestore
+        var firebaseAuth : FirebaseAuth = FirebaseAuth.getInstance() //Declared Firebase Authorisation
+        private var firebaseStore : FirebaseFirestore = FirebaseFirestore.getInstance()
 
 
         //Shared preference function to save user data
@@ -128,6 +128,9 @@ class User {
         /******Retrieve username and password from database******/
         fun LoginUser(email : String, password : String) : User
         {
+            //Initialized Firebase Authenticator
+            firebaseAuth = FirebaseAuth.getInstance()
+
             var loginUser : User = User()
             firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener{ task ->
@@ -168,7 +171,7 @@ class User {
 
 
                     } else {
-                        Log.d(ContentValues.TAG, "No such document")
+                        Log.d(ContentValues.TAG, "No such document (cannot locate user data)")
                     }
                 }
                 .addOnFailureListener { exception ->

@@ -11,17 +11,16 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.FirebaseApp
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var btnRegister: Button
     private lateinit var btnLogin: Button
-    private lateinit var txtEmailAddress: EditText
-    private lateinit var txtPassword: EditText
+    private lateinit var txtEmailAddressText: EditText
+    private lateinit var txtPasswordText: EditText
     private lateinit var sharedPreferences: SharedPreferences
-    private lateinit var firebaseStore : FirebaseFirestore
+    private var email : String = ""
+    private var password : String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,14 +30,11 @@ class LoginActivity : AppCompatActivity() {
         /******Hooks******/
         btnRegister = findViewById(R.id.btnRegisterRedirect)
         btnLogin = findViewById(R.id.btnLogin)
-        txtEmailAddress = findViewById(R.id.txtEmailAddress)
-        var email = txtEmailAddress.text.toString()
-        txtPassword = findViewById(R.id.txtPassword)
-        var password = txtPassword.text.toString()
-        var loginAuth : FirebaseAuth = FirebaseAuth.getInstance()
+        txtEmailAddressText = findViewById(R.id.txtEmailAddress)
+        txtPasswordText = findViewById(R.id.txtPassword)
         sharedPreferences = getSharedPreferences("UserData", Context.MODE_PRIVATE) //Initialize SharedPreferences
         FirebaseApp.initializeApp(this) //Initialise Firebase App in application
-
+        Log.d(TAG, "User Credentials- User email: $email \n User password: $password")
 
         /******Redirect to Register Page******/
         btnRegister.setOnClickListener {
@@ -47,18 +43,18 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        // Authenticate User
+        /******Authenticate User******/
         btnLogin.setOnClickListener {
-            var loginUser : User
-            if(txtEmailAddress.text.isEmpty() or txtPassword.text.isEmpty())
+            val loginUser : User
+            email = txtEmailAddressText.text.toString().trim()
+            password = txtPasswordText.text.toString()
+            if(email.isEmpty() || email == "" || password.isEmpty() || password == "")
             {
-                Toast.makeText(this, "Please fill in you credetials to login", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill in you credentials to login", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "User Credentials:  \n User email: $email \n User password: $password")
             }
             else
             {
-                val email = txtEmailAddress.text.toString().trim()
-                val password = txtPassword.text.toString().trim()
-
                 loginUser = User.LoginUser(email, password) //Login User
                 //Retrieve data from Firebase including user's name and store in SharedPreference
                 if(loginUser.equals("")) //if sign in failed
@@ -70,7 +66,7 @@ class LoginActivity : AppCompatActivity() {
                     //Get User Details and store in shared preference
                     saveUserData(loginUser.userID, loginUser.userName, loginUser.userSurname, loginUser.userEmail)
                     Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-                    val mainIntent = Intent(this, MainActivity::class.java)
+                    val mainIntent = Intent(this, DisplayDetails::class.java)
                     startActivity(mainIntent)
                 }
 

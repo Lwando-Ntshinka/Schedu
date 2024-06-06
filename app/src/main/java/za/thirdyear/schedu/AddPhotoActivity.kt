@@ -1,8 +1,6 @@
 package za.thirdyear.schedu
 
 import Project
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.Manifest
 import android.content.ContentValues
 import android.content.Context
@@ -12,26 +10,21 @@ import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
 import java.io.IOException
 
 
 class AddPhotoActivity : BaseActivity() {
 
-    private lateinit var button1: Button
+    private lateinit var addPicture: Button
     private lateinit var imageView: ImageView
-    private lateinit var button2: Button
+    private lateinit var done: Button
     private lateinit var takePhoto : Button
 
     val data_entries = mutableListOf<Project>() // Create an empty list
@@ -54,16 +47,16 @@ class AddPhotoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_photo)
 
-        button1 = findViewById(R.id.btnAddPicture)
-        button2 = findViewById(R.id.btnDone)
+        addPicture = findViewById(R.id.btnAddPicture)
+        done = findViewById(R.id.btnDone)
         imageView = findViewById(R.id.imgEntryImage)
         takePhoto = findViewById(R.id.btnTakePhoto)
 
-        button1.setOnClickListener{
+        addPicture.setOnClickListener{
             pickImageFromGallery()
         }
 
-        button2.setOnClickListener{
+        done.setOnClickListener{
             val bitmap = (imageView.drawable as? BitmapDrawable)?.bitmap
             if (bitmap != null) {
                 saveImageToInternalStorage(bitmap)
@@ -71,7 +64,6 @@ class AddPhotoActivity : BaseActivity() {
                 //val imageUri = intent.data // Get the URI from the intent parameter, not from the data class variable
                 //val dataEntry = data_Entries("Some title", 0, "Some date", "Some user", imageUri.toString()) // Create a data entry object with the image URI
                 //data_entries.add(dataEntry) // Add the object to your list
-
             } else {
                 Toast.makeText(this, "Failed to get image", Toast.LENGTH_SHORT).show()
             }
@@ -87,28 +79,24 @@ class AddPhotoActivity : BaseActivity() {
             }
         }
 
-
-
-        //back button
-        val backbutton: Button = findViewById(R.id.btnBackHome)
-        backbutton.setOnClickListener {
-            onBackPressed()
-        }
     }
 
-    private fun pickImageFromGallery() {
+
+
+    /******Get Image******/
+    public fun pickImageFromGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_REQUEST_CODE)
     }
 
-    private fun chooseImageGallery() {
+    public fun chooseImageGallery() {
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
         startActivityForResult(intent, IMAGE_CHOOSE)
     }
 
-    private fun requestCameraPermission(): Boolean {
+    public fun requestCameraPermission(): Boolean {
         var permissionGranted = false
 
         // If system os is Marshmallow or Above, we need to request runtime permission
@@ -134,7 +122,7 @@ class AddPhotoActivity : BaseActivity() {
         return permissionGranted
     }
 
-    private fun openCameraInterface() {
+    public fun openCameraInterface() {
         val values = ContentValues()
         values.put(MediaStore.Images.Media.TITLE, R.string.add_category_photo)
         imageUri = contentResolver?.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values)
@@ -190,15 +178,13 @@ class AddPhotoActivity : BaseActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(message)
         builder.setPositiveButton(R.string.Okay, null)
-
         val dialog = builder.create()
         dialog.show()
 
     }
 
-    private fun saveImageToInternalStorage(bitmap: Bitmap) {
+    public fun saveImageToInternalStorage(bitmap: Bitmap) {
         val filename = "image.jpg" // Specify the desired filename for your image
-
         try {
             val outputStream = openFileOutput(filename, Context.MODE_PRIVATE)
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
